@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Contracts</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+  <p>Current contracts</p>
+  <table>
+    <tr>
+      <th>DATE</th>
+      <th>BOUNTY</th>
+      <th>STATUS</th>
+    </tr>
+    <tr th:each="c : ${contracts}">
+      <td th:text="${c.due_date}"></td>
+      <td th:text="${c.bounty}"></td>
+      <td th:text="${c.status}"></td>
+    </tr>
+  </table>
+</body>
+
+</html>
