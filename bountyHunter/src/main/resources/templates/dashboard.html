@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Contracts</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+  <p>Available contracts</p>
+  <table>
+    <tr>
+      <th>DUE DATE</th>
+      <th>BOUNTY</th>
+    </tr>
+    <tr th:each="c : ${acontracts}">
+      <td th:text="${c.due_date}"></td>
+      <td th:text="${c.bounty}"></td>
+      <td>
+        <form action="/accept_contract" method="post">
+          <input type="hidden" name="contractId" th:value="${c.id}">
+          <input type="hidden" name="email" th:value="${email}">
+          <button>Accept</button>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+
+  <p>Current contracts</p>
+  <table>
+    <tr>
+      <th>DUE DATE</th>
+      <th>BOUNTY</th>
+      <th>STATUS</th>
+    </tr>
+    <tr th:each="c : ${ccontracts}">
+      <td th:text="${c.due_date}"></td>
+      <td th:text="${c.bounty}"></td>
+      <td th:text="${c.status}"></td>
+    </tr>
+  </table>
+
+</body>
+
+</html>

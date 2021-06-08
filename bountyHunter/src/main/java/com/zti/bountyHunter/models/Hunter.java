@@ -39,10 +39,11 @@ public class Hunter {
         this.score = score;
     }
 
-    public Hunter(String name, String surname, Integer score) {
+    public Hunter(String name, String surname, Integer score, String email) {
         this.name = name;
         this.surname = surname;
         this.score = score;
+        this.email = email;
     }
 
     @Id
@@ -51,6 +52,15 @@ public class Hunter {
     private String name;
     private String surname;
     private Integer score;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     protected Hunter(){}
     

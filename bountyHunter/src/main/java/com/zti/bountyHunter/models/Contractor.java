@@ -31,9 +31,10 @@ public class Contractor {
         this.surname = surname;
     }
 
-    public Contractor(String name, String surname, Integer score) {
+    public Contractor(String name, String surname, String email) {
         this.name = name;
         this.surname = surname;
+        this.email = email;
     }
 
     @Id
@@ -41,6 +42,15 @@ public class Contractor {
     private Integer id;
     private String name;
     private String surname;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     protected Contractor(){}
     

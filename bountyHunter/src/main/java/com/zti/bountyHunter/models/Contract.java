@@ -15,8 +15,8 @@ public class Contract {
     private Date due_date;
     private Integer bounty;
     private Integer status;
-    private Integer hunterId;
-    private Integer contractorId;
+    private Integer hunter_id;
+    private Integer contractor_id;
 
     public Integer getId() {
         return id;
@@ -43,26 +43,26 @@ public class Contract {
         this.status = status;
     }
     public Integer getHunterId() {
-        return hunterId;
+        return hunter_id;
     }
-    public void setHunterId(Integer hunterId) {
-        this.hunterId = hunterId;
+    public void setHunterId(Integer hunter_id) {
+        this.hunter_id = hunter_id;
     }
     public Integer getContractorId() {
-        return contractorId;
+        return contractor_id;
     }
-    public void setContractorId(Integer contractorId) {
-        this.contractorId = contractorId;
+    public void setContractorId(Integer contractor_id) {
+        this.contractor_id = contractor_id;
     }
 
-    public Contract(Integer id, Date due_date, Integer bounty, Integer status, Integer hunterId,
-            Integer contractorId) {
+    public Contract(Integer id, Date due_date, Integer bounty, Integer status, Integer hunter_id,
+            Integer contractor_id) {
         this.id = id;
         this.due_date = due_date;
         this.bounty = bounty;
         this.status = status;
-        this.hunterId = hunterId;
-        this.contractorId = contractorId;
+        this.hunter_id = hunter_id;
+        this.contractor_id = contractor_id;
     }
     
     public Contract() {}
