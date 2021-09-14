@@ -4,6 +4,7 @@
 <head>
   <title>Contracts</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" th:src="@{/js/app.js}"></script>
 </head>
 
 <body>
@@ -41,6 +42,9 @@
       <td th:text="${c.status}"></td>
     </tr>
   </table>
+
+  <button th:onclick="test_click()">CLICK</button>
+  <div id="box"></div>
 
 </body>
 
