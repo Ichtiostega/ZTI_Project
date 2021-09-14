@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head> 
     <title>Hunters</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
     <p>Input email of hunter</p>
-    <form action="/dashboard", method="GET">
+    <form th:action="@{dashboard}" method="GET">
         <input name="email" type="text">
         <button>Send</button>
     </form>
