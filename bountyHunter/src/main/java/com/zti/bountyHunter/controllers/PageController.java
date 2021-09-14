@@ -81,9 +81,9 @@ public class PageController {
 	}
 
 	@PostMapping("/register")
-	public String register(@RequestParam(name="username", required=true) String username, @RequestParam(name="password", required=true) String password, Model model) {
+	public String register(@RequestParam(name="username", required=true) String username, @RequestParam(name="password", required=true) String password, @RequestParam(name="role", required=true) String role, Model model) {
 		usersInterface.save(new Users(username, passwordEncoder.encode(password)));
-		authoritiesInterface.save(new Authorities(username, "USER"));
+		authoritiesInterface.save(new Authorities(username, role));
 		return "index";
 	}
 }

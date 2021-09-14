@@ -1,12 +1,16 @@
-
-CREATE TABLE hunter
+CREATE TABLE users
 (
- "id"      serial NOT NULL,
- name    varchar(50) NULL,
- surname varchar(50) NULL,
- email   varchar(100) NOT NULL,
- score   int NOT NULL,
- CONSTRAINT PK_hunter PRIMARY KEY ( "id" )
+   username VARCHAR(50)  NOT NULL,
+   password VARCHAR(100) NOT NULL,
+   enabled  BOOLEAN      NOT NULL DEFAULT TRUE,
+   PRIMARY KEY (username)
+ );
+
+CREATE TABLE authorities
+(
+username  VARCHAR(50) NOT NULL,
+authority VARCHAR(50) NOT NULL,
+FOREIGN KEY (username) REFERENCES users (username)
 );
 
 CREATE TABLE target
@@ -15,15 +19,6 @@ CREATE TABLE target
  name   varchar(50) NOT NULL,
  status int NOT NULL,
  CONSTRAINT PK_target PRIMARY KEY ( "id" )
-);
-
-CREATE TABLE contractor
-(
- "id"      serial NOT NULL,
- name    varchar(50) NOT NULL,
- surname varchar(50) NOT NULL,
- email   varchar(100) NOT NULL,
- CONSTRAINT PK_table_64 PRIMARY KEY ( "id" )
 );
 
 CREATE TABLE contract
@@ -49,18 +44,10 @@ CREATE TABLE contract_target
  CONSTRAINT FK_46 FOREIGN KEY ( target_id ) REFERENCES target ( "id" )
 );
 
-INSERT INTO hunter(name, surname, email, score) VALUES ('Adam', 'Abacki', 'a.abacki@op.pl', 7), 
-('Cadam', 'Cabacki', 'a.cabacki@op.pl', 3),
-('Dadam', 'Dabacki', 'a.dabacki@op.pl', 5);
+-- INSERT INTO contract(due_date, bounty, status, hunter_id, contractor_id) VALUES ('10-10-2021', 2000, 1, 1, 1), 
+-- ('2-10-2021', 2500, 2, 2, 1), 
+-- ('5-10-2021', 6000, 1, 1, 2);
 
-INSERT INTO contractor(name, surname, email) VALUES ('Badam', 'Babacki', 'a.babacki@op.pl'), 
-('Radam', 'Rabacki', 'a.rabacki@op.pl'),
-('Kadam', 'Kabacki', 'a.kabacki@op.pl');
-
-INSERT INTO contract(due_date, bounty, status, hunter_id, contractor_id) VALUES ('10-10-2021', 2000, 1, 1, 1), 
-('2-10-2021', 2500, 2, 2, 1), 
-('5-10-2021', 6000, 1, 1, 2);
-
-INSERT INTO contract(due_date, bounty, status, contractor_id) VALUES('10-11-2021', 21000, 0, 2), 
-('10-15-2021', 75000, 0, 3), 
-('10-20-2021', 1000000, 0, 1);
+-- INSERT INTO contract(due_date, bounty, status, contractor_id) VALUES('10-11-2021', 21000, 0, 2), 
+-- ('10-15-2021', 75000, 0, 3), 
+-- ('10-20-2021', 1000000, 0, 1);
