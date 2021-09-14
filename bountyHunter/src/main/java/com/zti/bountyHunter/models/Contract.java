@@ -15,8 +15,8 @@ public class Contract {
     private Date due_date;
     private Integer bounty;
     private Integer status;
-    private Integer hunter_id;
-    private Integer contractor_id;
+    private String hunter_id;
+    private String contractor_id;
 
     public Integer getId() {
         return id;
@@ -42,21 +42,21 @@ public class Contract {
     public void setStatus(Integer status) {
         this.status = status;
     }
-    public Integer getHunterId() {
+    public String getHunterId() {
         return hunter_id;
     }
-    public void setHunterId(Integer hunter_id) {
+    public void setHunterId(String hunter_id) {
         this.hunter_id = hunter_id;
     }
-    public Integer getContractorId() {
+    public String getContractorId() {
         return contractor_id;
     }
-    public void setContractorId(Integer contractor_id) {
+    public void setContractorId(String contractor_id) {
         this.contractor_id = contractor_id;
     }
 
-    public Contract(Integer id, Date due_date, Integer bounty, Integer status, Integer hunter_id,
-            Integer contractor_id) {
+    public Contract(Integer id, Date due_date, Integer bounty, Integer status, String hunter_id,
+    String contractor_id) {
         this.id = id;
         this.due_date = due_date;
         this.bounty = bounty;

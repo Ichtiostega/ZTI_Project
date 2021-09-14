@@ -5,18 +5,16 @@ import com.zti.bountyHunter.dao.ContractInterface;
 import com.zti.bountyHunter.dao.HunterInterface;
 import com.zti.bountyHunter.dao.UsersInterface;
 import com.zti.bountyHunter.models.Authorities;
-import com.zti.bountyHunter.models.Contract;
-import com.zti.bountyHunter.models.Hunter;
 import com.zti.bountyHunter.models.Users;
-import com.zti.bountyHunter.requestBodies.AcceptContract;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -40,28 +38,10 @@ public class PageController {
 	PasswordEncoder passwordEncoder;
 
 	@GetMapping("/dashboard")
-	public String dashboard(@RequestParam(name="email", required=true) String email, Model model) {
-		Hunter h = hunterInterface.findByEmail(email).iterator().next();
-		Iterable<Contract> cc = contractInterface.findByHunterId(h.getId());
-		Iterable<Contract> ac = contractInterface.findByStatus(0);
-		model.addAttribute("ccontracts", cc);
-		model.addAttribute("acontracts", ac);
-		model.addAttribute("email", email);
-		return "dashboard";
-	}
-
-	@PostMapping("/accept_contract")
-	public String accept_contract(@ModelAttribute AcceptContract body, Model model) {
-		Hunter h = hunterInterface.findByEmail(body.getEmail()).iterator().next();
-		Contract c = contractInterface.getById(body.getContractId());
-		c.setStatus(1);
-		c.setHunterId(h.getId());
-		contractInterface.save(c);
-		Iterable<Contract> cc = contractInterface.findByHunterId(h.getId());
-		Iterable<Contract> ac = contractInterface.findByStatus(0);
-		model.addAttribute("ccontracts", cc);
-		model.addAttribute("acontracts", ac);
-		model.addAttribute("email", body.getEmail());
+	public String dashboard(Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Authorities auth = authoritiesInterface.getById(authentication.getName());
+		model.addAttribute("role", auth.getAuthority());
 		return "dashboard";
 	}
 

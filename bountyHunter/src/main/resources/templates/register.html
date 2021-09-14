@@ -12,15 +12,15 @@
             You have been logged out.
         </div>
         <form th:action="@{/register}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
+            <div><label> User Name: <input type="text" name="username"/> </label></div>
             <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><label>
+            <div><label> Role: 
                 <select name="role" id="role">
                     <option value="HUNTER">Hunter</option>
                     <option value="CONTRACTOR">Contractor</option>
                 </select>
             </label></div>
-            <div><input type="submit" value="Sign In"/></div>
+            <div><input type="submit" value="Register"/></div>
         </form>
     </body>
 </html>

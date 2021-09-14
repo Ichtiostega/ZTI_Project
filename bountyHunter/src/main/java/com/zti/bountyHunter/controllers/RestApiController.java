@@ -14,7 +14,6 @@ public class RestApiController {
     @GetMapping("/test")
 	public String test(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		String currentPrincipalName = authentication.getName();
-		return currentPrincipalName;
+		return authentication.getName();
 	}
 }
