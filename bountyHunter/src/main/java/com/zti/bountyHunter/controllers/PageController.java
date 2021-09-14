@@ -1,14 +1,17 @@
 package com.zti.bountyHunter.controllers;
 
+import com.zti.bountyHunter.dao.AuthoritiesInterface;
 import com.zti.bountyHunter.dao.ContractInterface;
 import com.zti.bountyHunter.dao.HunterInterface;
+import com.zti.bountyHunter.dao.UsersInterface;
+import com.zti.bountyHunter.models.Authorities;
 import com.zti.bountyHunter.models.Contract;
 import com.zti.bountyHunter.models.Hunter;
+import com.zti.bountyHunter.models.Users;
 import com.zti.bountyHunter.requestBodies.AcceptContract;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -23,8 +26,18 @@ public class PageController {
 
 	@Autowired
 	private ContractInterface contractInterface;
+	
 	@Autowired
 	private HunterInterface hunterInterface;
+
+	@Autowired
+	UsersInterface usersInterface;
+
+	@Autowired
+	AuthoritiesInterface authoritiesInterface;
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
 
 	@GetMapping("/dashboard")
 	public String dashboard(@RequestParam(name="email", required=true) String email, Model model) {
@@ -60,5 +73,17 @@ public class PageController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		return "login";
+	}
+
+	@GetMapping("/register")
+	public String register(Model model) {
+		return "register";
+	}
+
+	@PostMapping("/register")
+	public String register(@RequestParam(name="username", required=true) String username, @RequestParam(name="password", required=true) String password, Model model) {
+		usersInterface.save(new Users(username, passwordEncoder.encode(password)));
+		authoritiesInterface.save(new Authorities(username, "USER"));
+		return "index";
 	}
 }

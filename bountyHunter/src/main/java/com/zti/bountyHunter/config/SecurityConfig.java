@@ -40,12 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource).withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
-			.and()
-			.withUser("test1").password(passwordEncoder().encode("test1pass")).roles("USER")
-			.and()
-			.withUser("test2").password(passwordEncoder().encode("test2pass")).roles("USER")
-			.and()
-			.withUser("test_admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
+		auth.jdbcAuthentication().dataSource(dataSource);
+		//  .withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
+		// 	.and()
+		// 	.withUser("test1").password(passwordEncoder().encode("test1pass")).roles("USER")
+		// 	.and()
+		// 	.withUser("test2").password(passwordEncoder().encode("test2pass")).roles("USER")
+		// 	.and()
+		// 	.withUser("test_admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
 	}
 }
