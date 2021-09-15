@@ -5,13 +5,12 @@
 </head>
 
 <body>
-  <div th:fragment="site">
-    <h2>Welcome Hunter!</h2>
-    <div id="selection">
-      <button th:onclick="hunter_contract_view()">VIEW MY CONTRACTS</button>
-      <button th:onclick="browse_contracts()">BROWSE CONTRACTS</button>
-    <div id="view"></div>
-    </div>
+  <div th:fragment="greeting">
+    <table class="heading"><td class="heading"><h2>Welcome Hunter.</h2></td></table>
+  </div>
+  <div th:fragment="buttons">
+    <button th:onclick="hunter_contract_view()">VIEW MY CONTRACTS</button>
+    <button th:onclick="browse_contracts()">BROWSE CONTRACTS</button>
   </div>
 </body>
 

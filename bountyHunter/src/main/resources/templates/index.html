@@ -3,14 +3,21 @@
 <head> 
     <title>Hunters</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-    <h2>Welcome Hunters!</h2>
-    <form th:action="@{/register}" method="GET">
-        <button>Register</button>
-    </form>
-    <form th:action="@{/dashboard}" method="GET">
-        <button>Log In</button>
-    </form>
+    <div class=vertical_flex>
+        <div id="greeting">
+            <table class="heading"><td class="heading"><h2>Welcome Hunters and Contractors.</h2></td></table>
+        </div>
+        <div id="buttons">
+            <form th:action="@{/register}" method="GET">
+                <button>Register</button>
+            </form>
+            <form th:action="@{/dashboard}" method="GET">
+                <button>Log In</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

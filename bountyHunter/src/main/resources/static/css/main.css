@@ -1,0 +1,102 @@
+.vertical_flex {
+    display: flex;
+    flex-direction: column;
+}
+.heading {
+    background-color: #003318;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    border: none;
+}
+#greeting {
+    display: flex;
+    justify-content: center;
+}
+#view {
+    display: flex;
+    justify-content: center;
+}
+#logout {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+.input {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.submit, #buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+form {
+    width: 300px;
+}
+h2 {
+	line-height: 0.1;
+    padding: 0px 10px 0px 10px;
+}
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #004922;
+    color: #c9a400;
+    font-family: Times New Roman, Helvetica, Arial, sans-serif;
+}
+input, select {
+    background-color: #003016;
+    color: #c9a400;
+    border: none;
+    width: 150px;
+    padding: 0px 0px 0px 0px;
+    margin: 1px 1px 1px 1px;
+    font-family: Times New Roman, Helvetica, Arial, sans-serif;
+}
+button, input[type=submit] {
+    background-color: #c9a400;
+    color: #004922;
+    border: none;
+    width: initial;
+    font-family: Times New Roman, Helvetica, Arial, sans-serif;
+    padding: 5px 10px 5px 10px;
+    margin: 5px 5px 5px 5px;
+}
+button:hover, input[type=submit]:hover {
+    background-color: #a78800;
+    color: #004922;
+    border: none;
+}
+button:active, input[type=submit]:active {
+    background-color: #c9a400;
+    color: #004922;
+    border: none;
+}
+table {
+	margin: 5px 5px 5px 5px;
+    background-color: #413500;
+    border: 2px solid #e7bd00;
+    border-collapse: collapse;
+    text-align: center;
+}
+th {
+    border: 2px solid #e7bd00;
+    padding: 5px 30px 5px 30px;
+    font-size: 20px;
+}
+td {
+    border: 1px solid #e7bd00;
+    padding: 5px 30px 5px 30px;
+    font-size: 16px;
+}
+tr {
+    height: 25px;
+}

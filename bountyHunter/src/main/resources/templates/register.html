@@ -3,6 +3,7 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Spring Security Example </title>
+        <link rel="stylesheet" th:href="@{/css/main.css}">
     </head>
     <body>
         <div th:if="${param.error}">
@@ -12,15 +13,17 @@
             You have been logged out.
         </div>
         <form th:action="@{/register}" method="post">
-            <div><label> User Name: <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><label> Role: 
-                <select name="role" id="role">
-                    <option value="HUNTER">Hunter</option>
-                    <option value="CONTRACTOR">Contractor</option>
-                </select>
-            </label></div>
-            <div><input type="submit" value="Register"/></div>
+            <div class="inputs">
+                <div class="input">User Name: <input type="text" name="username"/></div>
+                <div class="input">Password: <input type="password" name="password"/></div>
+                <div class="input">Role: 
+                    <select name="role" id="role">
+                        <option value="HUNTER">Hunter</option>
+                        <option value="CONTRACTOR">Contractor</option>
+                    </select>
+                </div>
+                <div class="submit"><input type="submit" value="Register"/></div>
+            </div>
         </form>
     </body>
 </html>

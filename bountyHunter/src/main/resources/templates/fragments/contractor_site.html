@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+  <div th:fragment="greeting">
+    <table class="heading"><td class="heading"><h2>Welcome Contractor.</h2></td></table>
+  </div>
+  <div th:fragment="buttons">
+    <button th:onclick="my_contract_view()">VIEW CONTRACTS</button>
+    <button th:onclick="contract_add_view()">ADD CONTRACT</button>
+  </div>
+</body>
+
+</html>
