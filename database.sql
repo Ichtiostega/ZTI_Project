@@ -30,10 +30,11 @@ CREATE TABLE target
 CREATE TABLE contract
 (
     "id"            serial NOT NULL,
-    due_date      date NULL,
+    due_date      date NOT NULL,
     bounty        int NULL,
+    description   VARCHAR(1000) NULL,
     hunter_id     VARCHAR(50) NULL,
-    status        int NOT NULL,
+    status        int NOT NULL DEFAULT 0,
     contractor_id VARCHAR(50) NOT NULL,
     CONSTRAINT PK_contract PRIMARY KEY ( "id" ),
     CONSTRAINT FK_33 FOREIGN KEY ( hunter_id ) REFERENCES users ( "username" ),

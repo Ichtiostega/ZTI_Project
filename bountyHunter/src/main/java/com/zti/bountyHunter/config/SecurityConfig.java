@@ -26,8 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+			.csrf().disable()
 			.authorizeRequests()
-				.antMatchers("/", "/home", "/register").permitAll()
+				.antMatchers("/", "/register").permitAll()
+				.antMatchers("POST", "/add_contract").hasAuthority("CONTRACTOR")
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -41,12 +43,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource);
-		//  .withUser("user1").password(passwordEncoder().encode("user1Pass")).roles("USER")
-		// 	.and()
-		// 	.withUser("test1").password(passwordEncoder().encode("test1pass")).roles("USER")
-		// 	.and()
-		// 	.withUser("test2").password(passwordEncoder().encode("test2pass")).roles("USER")
-		// 	.and()
-		// 	.withUser("test_admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN");
 	}
 }

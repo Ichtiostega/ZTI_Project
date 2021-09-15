@@ -2,20 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Contracts</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script type="text/javascript" th:src="@{/js/app.js}"></script>
+  <title>Contracts</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" th:src="@{/js/app.js}"></script>
 </head>
 
 <body>
 
-    <div th:switch="${role}">
-        <div th:case="HUNTER">AAAAAAAAAAAAA</div>
-        <div th:case="CONTRACTOR">BBBBBBBBBBBBB</div>
+  <div th:switch="${role}">
+    <div th:case="HUNTER">
     </div>
-
-    <button th:onclick="test_click()">CLICK</button>
-    <div id="box"></div>
+    <div th:case="CONTRACTOR">
+      <div th:insert="fragments/contractor_header :: header"></div>
+      <div id="view"></div>
+    </div>
+  </div>
 
 </body>
 
