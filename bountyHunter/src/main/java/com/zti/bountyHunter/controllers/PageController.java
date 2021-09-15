@@ -42,6 +42,7 @@ public class PageController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Authorities auth = authoritiesInterface.getById(authentication.getName());
 		model.addAttribute("role", auth.getAuthority());
+		model.addAttribute("username", authentication.getName());
 		return "dashboard";
 	}
 

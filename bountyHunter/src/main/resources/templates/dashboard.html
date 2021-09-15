@@ -11,10 +11,10 @@
 
   <div th:switch="${role}">
     <div th:case="HUNTER">
+      <div th:insert="fragments/hunter_site :: site"></div>
     </div>
     <div th:case="CONTRACTOR">
       <div th:insert="fragments/contractor_header :: header"></div>
-      <div id="view"></div>
     </div>
   </div>
   <div>
