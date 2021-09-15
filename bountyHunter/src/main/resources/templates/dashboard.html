@@ -9,28 +9,29 @@
 </head>
 
 <body>
-
-  <div id=greeting>
-    <div th:if="${role == 'HUNTER'}">
-      <div th:insert="fragments/hunter_site :: greeting"></div>
+  <div class="vertical_flex">
+    <div id=greeting>
+      <div th:if="${role == 'HUNTER'}">
+        <div th:insert="fragments/hunter_site :: greeting"></div>
+      </div>
+      <div th:if="${role == 'CONTRACTOR'}">
+        <div th:insert="fragments/contractor_site :: greeting"></div>
+      </div>
     </div>
-    <div th:if="${role == 'CONTRACTOR'}">
-      <div th:insert="fragments/contractor_site :: greeting"></div>
+    <div id=buttons>
+      <div th:if="${role == 'HUNTER'}">
+        <div th:insert="fragments/hunter_site :: buttons"></div>
+      </div>
+      <div th:if="${role == 'CONTRACTOR'}">
+        <div th:insert="fragments/contractor_site :: buttons"></div>
+      </div>
     </div>
-  </div>
-  <div id=buttons>
-    <div th:if="${role == 'HUNTER'}">
-      <div th:insert="fragments/hunter_site :: buttons"></div>
+    <div id="view"></div>
+    <div id="logout">
+      <form th:action="@{/logout}" method="GET">
+        <button>Log Out</button>
+      </form>
     </div>
-    <div th:if="${role == 'CONTRACTOR'}">
-      <div th:insert="fragments/contractor_site :: buttons"></div>
-    </div>
-  </div>
-  <div id="view"></div>
-  <div id="logout">
-    <form th:action="@{/logout}" method="GET">
-      <button>Log Out</button>
-    </form>
   </div>
 </body>
 

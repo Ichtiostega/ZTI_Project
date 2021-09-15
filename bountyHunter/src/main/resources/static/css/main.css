@@ -37,7 +37,7 @@
     justify-content: center;
     flex-direction: row;
 }
-form {
+.sec_form {
     width: 300px;
 }
 h2 {
@@ -82,7 +82,7 @@ button:active, input[type=submit]:active {
 }
 table {
 	margin: 5px 5px 5px 5px;
-    background-color: #413500;
+    background-color: #002712;
     border: 2px solid #e7bd00;
     border-collapse: collapse;
     text-align: center;
@@ -98,5 +98,5 @@ td {
     font-size: 16px;
 }
 tr {
-    height: 25px;
+    height: 43px;
 }

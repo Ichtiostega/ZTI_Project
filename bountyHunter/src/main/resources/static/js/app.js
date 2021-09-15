@@ -79,10 +79,14 @@ function contract_status(id, status)
 function contract_add_view()
 {
     document.getElementById("view").innerHTML = '' +
-        '<div><label> Due Date: <input type="text" id="due_date"/> </label></div>' +
-        '<div><label> Bounty: <input type="text" id="bounty"/> </label></div>' +
-        '<div><label> Description: <input type="text" id="description"/> </label></div>' +
-        '<div><button onclick="add_contract()">Post</button></div>'
+        '<div class="sec_form">' +
+        '<div class="inputs">' +
+        '<div class="input">Due Date: <input type="text" id="due_date"/></div>' +
+        '<div class="input">Bounty: <input type="text" id="bounty"/></div>' +
+        '<div class="input">Description: <input type="text" id="description"/></div>' +
+        '<div class="submit"><button onclick="add_contract()">Post</button></div>' +
+        '</div>' +
+        '</div>'
 }
 
 function browse_contracts()
