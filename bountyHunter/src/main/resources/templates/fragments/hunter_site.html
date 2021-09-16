@@ -5,12 +5,21 @@
 </head>
 
 <body>
-  <div th:fragment="greeting">
-    <table class="heading"><td class="heading"><h2>Welcome Hunter.</h2></td></table>
-  </div>
-  <div th:fragment="buttons">
-    <button th:onclick="hunter_contract_view()">VIEW MY CONTRACTS</button>
-    <button th:onclick="browse_contracts()">BROWSE CONTRACTS</button>
+  <p th:text="${trusted}"></p>
+    <div th:fragment="greeting">
+      <div th:if="${trusted}">
+        <table class="heading"><td class="heading"><h2>Welcome Hunter.</h2></td></table>
+      </div>
+      <div th:unless="${trusted}">
+        <table class="heading"><td class="heading"><h2>Your performance is considered unsatisfactory.</h2></td></table>
+      </div>
+    </div>
+    <div th:fragment="buttons">
+      <div th:if="${trusted}">
+        <button th:onclick="hunter_contract_view()">VIEW MY CONTRACTS</button>
+        <button th:onclick="browse_contracts()">BROWSE CONTRACTS</button>
+      </div>
+    </div>
   </div>
 </body>
 

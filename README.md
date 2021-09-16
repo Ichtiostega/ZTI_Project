@@ -12,5 +12,5 @@
     4) Define stats
 3) Stats
     1) Compute stats
-    2) Block user if bad stats
-4) Add aspect logging
+    2) ~~Block user if bad stats~~
+4) ~~Add aspect logging~~

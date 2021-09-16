@@ -1,8 +1,6 @@
 package com.zti.bountyHunter.controllers;
 
 import java.util.Collections;
-import java.util.Dictionary;
-import java.util.List;
 
 import com.zti.bountyHunter.dao.ContractInterface;
 import com.zti.bountyHunter.models.Contract;
@@ -16,7 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -27,12 +26,12 @@ public class RestApiController {
 	@Autowired
 	ContractInterface contractInterface;
 
-	@GetMapping("/available_contracts")
+	@RequestMapping(method = RequestMethod.GET, value = "/available_contracts")
 	public Iterable<Contract> getContracts(Model model) {
 		return contractInterface.findByStatus(0);
 	}
 
-	@PostMapping("/add_contract")
+	@RequestMapping(method = RequestMethod.POST, value = "/add_contract")
 	public String postContracts(Model model, @RequestBody Contract contract) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		contract.setContractorId(authentication.getName());
@@ -41,20 +40,20 @@ public class RestApiController {
 		return "";
 	}
 
-	@PutMapping("/accept_contract")
+	@RequestMapping(method = RequestMethod.PUT, value = "/accept_contract")
 	public String acceptContract(Model model, @RequestBody Contract contract) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		contractInterface.accept(contract.getId(), authentication.getName());
 		return "";
 	}
 
-	@PutMapping("/contract_status")
+	@RequestMapping(method = RequestMethod.PUT, value = "/contract_status")
 	public String changeContractStatus(Model model, @RequestBody Contract contract) {
 		contractInterface.changeStatus(contract.getId(), contract.getStatus());
 		return "";
 	}
 
-	@GetMapping("/my_contracts")
+	@RequestMapping(method = RequestMethod.GET, value = "/my_contracts")
 	public Iterable<Contract> getMyContracts(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null && authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("CONTRACTOR")))
