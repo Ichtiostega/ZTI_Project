@@ -7,6 +7,7 @@
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
     border: none;
+    max-width: none;
 }
 #greeting {
     display: flex;
@@ -21,6 +22,9 @@
     bottom: 10px;
     right: 10px;
 }
+#description {
+    width: auto;
+}
 .inputs {
     display: flex;
     flex-direction: column;
@@ -30,6 +34,12 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+}
+.big_input {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 .submit, #buttons {
     flex-grow: 1;
@@ -52,14 +62,16 @@ body {
     color: #c9a400;
     font-family: Times New Roman, Helvetica, Arial, sans-serif;
 }
-input, select {
+input, select, textarea {
     background-color: #003016;
     color: #c9a400;
     border: none;
+    font-family: Times New Roman, Helvetica, Arial, sans-serif;
+}
+input, select {
     width: 150px;
     padding: 0px 0px 0px 0px;
     margin: 1px 1px 1px 1px;
-    font-family: Times New Roman, Helvetica, Arial, sans-serif;
 }
 button, input[type=submit] {
     background-color: #c9a400;
@@ -96,6 +108,8 @@ td {
     border: 1px solid #e7bd00;
     padding: 5px 30px 5px 30px;
     font-size: 16px;
+    max-width: 300px;
+    word-wrap: break-word;
 }
 tr {
     height: 43px;

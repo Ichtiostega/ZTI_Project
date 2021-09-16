@@ -1,5 +1,7 @@
 package com.zti.bountyHunter.dao;
 
+import java.sql.Date;
+
 import com.zti.bountyHunter.models.Contract;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,8 +23,8 @@ public interface ContractInterface extends JpaRepository<Contract, Integer> {
     @Transactional
     void accept(Integer id, String hunterId);
     @Modifying
-    @Query(value="UPDATE contract SET status = ?2 WHERE id = ?1", nativeQuery=true)
+    @Query(value="UPDATE contract SET status = ?2, end_date = ?3 WHERE id = ?1", nativeQuery=true)
     @Transactional
-    void changeStatus(Integer id, Integer status);
+    void changeStatus(Integer id, Integer status, Date data);
     Iterable<Contract> findByStatus(Integer status);
 }

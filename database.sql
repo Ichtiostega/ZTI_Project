@@ -31,6 +31,7 @@ CREATE TABLE contract
 (
     "id"            serial NOT NULL,
     due_date      date NOT NULL,
+    end_date      date NULL,
     bounty        int NULL,
     description   VARCHAR(1000) NULL,
     hunter_id     VARCHAR(50) NULL,

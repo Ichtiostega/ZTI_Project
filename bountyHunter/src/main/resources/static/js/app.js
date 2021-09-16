@@ -22,6 +22,10 @@ function my_contract_view()
             {
                 html += "Failed"
             }
+            if ((element["status"] >= 2 && new Date(element["due_date"]) < new Date(element["end_date"])) || (element["status"] == 1 && new Date(element["due_date"]) < new Date()))
+            {
+                html += ", Overdue"
+            }
             html += "</td></tr>"
         });
         html += "</table>"
@@ -53,6 +57,10 @@ function hunter_contract_view()
             {
                 html += "Failed"
             }
+            if (element["status"] >= 2 && new Date(element["due_date"]) < new Date(element["end_date"]))
+            {
+                html += ", Overdue"
+            }
             html += '</td></tr>';
         });
         html += "</table>"
@@ -83,7 +91,7 @@ function contract_add_view()
         '<div class="inputs">' +
         '<div class="input">Due Date: <input type="text" id="due_date"/></div>' +
         '<div class="input">Bounty: <input type="text" id="bounty"/></div>' +
-        '<div class="input">Description: <input type="text" id="description"/></div>' +
+        '<div class="big_input"><div>Description:</div> <textarea id="description" maxlength=1000 rows=10></textarea></div>' +
         '<div class="submit"><button onclick="add_contract()">Post</button></div>' +
         '</div>' +
         '</div>'
@@ -132,4 +140,21 @@ function add_contract()
         "due_date": document.getElementById("due_date").value,
         "description": document.getElementById("description").value
     }));
+}
+
+function show_stats() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        data = JSON.parse(this.response)
+        html = "<table><tr><th>Ongoing</th><th>Done</th><th>Failed</th><th>Overdue</th><th>Success ratio</th><th>Overdue ratio</th></tr><tr>";
+        data.forEach(element => {
+            html += "<td>" + element + "</td>";
+        });
+        html += "<td>" + Math.floor((parseInt(data[1]) / (parseInt(data[1]) + parseInt(data[2]))) * 100).toString() + "%</td>";
+        html += "<td>" + Math.floor((parseInt(data[3]) / (parseInt(data[0]) + parseInt(data[1]) + parseInt(data[2]))) * 100).toString() + "%</td>";
+        html += "</tr></table>"
+        document.getElementById("view").innerHTML = html
+        }
+    xhttp.open("GET", "/my_stats", true);
+    xhttp.send();
 }

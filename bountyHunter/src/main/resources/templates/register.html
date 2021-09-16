@@ -6,12 +6,6 @@
         <link rel="stylesheet" th:href="@{/css/main.css}">
     </head>
     <body>
-        <div th:if="${param.error}">
-            Invalid username and password.
-        </div>
-        <div th:if="${param.logout}">
-            You have been logged out.
-        </div>
         <form class="sec_form" th:action="@{/register}" method="post">
             <div class="inputs">
                 <div class="input">User Name: <input type="text" name="username"/></div>

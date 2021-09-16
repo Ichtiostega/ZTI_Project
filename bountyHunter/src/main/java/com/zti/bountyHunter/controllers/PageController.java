@@ -57,8 +57,6 @@ public class PageController {
 				if(c.getStatus() == 3)
 					f += 1;
 			}
-			System.out.println(s);
-			System.out.println(f);
 			if(s+f >= 5 && f>s)
 				model.addAttribute("trusted", false);
 			else

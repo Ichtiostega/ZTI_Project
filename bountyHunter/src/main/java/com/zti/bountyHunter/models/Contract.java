@@ -13,6 +13,7 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Date due_date;
+    private Date end_date;
     private Integer bounty;
     private String description;
     private Integer status;
@@ -30,6 +31,12 @@ public class Contract {
     }
     public void setDue_date(Date due_date) {
         this.due_date = due_date;
+    }
+    public Date getEnd_date() {
+        return end_date;
+    }
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
     }
     public Integer getBounty() {
         return bounty;
@@ -62,10 +69,11 @@ public class Contract {
         this.contractor_id = contractor_id;
     }
 
-    public Contract(Integer id, Date due_date, Integer bounty, String description, Integer status, String hunter_id,
+    public Contract(Integer id, Date due_date, Date end_date, Integer bounty, String description, Integer status, String hunter_id,
     String contractor_id) {
         this.id = id;
         this.due_date = due_date;
+        this.end_date = end_date;
         this.bounty = bounty;
         this.description = description;
         this.status = status;
