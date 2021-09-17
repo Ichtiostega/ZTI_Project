@@ -3,9 +3,9 @@ function my_contract_view()
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         data = JSON.parse(this.response)
-        html = "<table><tr><th>Due date</th><th>Bounty</th><th>Description</th><th>Status</th></tr>"
+        html = "<table><tr><th>Due date</th><th>End date</th><th>Bounty</th><th>Description</th><th>Status</th></tr>"
         data.forEach(element => {
-            html += "<tr><td>" + element["due_date"] + "</td><td>" + element["bounty"] + "</td><td>" + element["description"] + "</td><td>"
+            html += "<tr><td>" + element["due_date"] + "</td><td>" + element["end_date"] + "</td><td>" + element["bounty"] + "</td><td>" + element["description"] + "</td><td>"
             if(element["status"] == 0)
             {
                 html += "Posted"
@@ -40,9 +40,9 @@ function hunter_contract_view()
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         data = JSON.parse(this.response)
-        html = "<table><tr><th>Due date</th><th>Bounty</th><th>Description</th><th>Action</th></tr>"
+        html = "<table><tr><th>Due date</th><th>End date</th><th>Bounty</th><th>Description</th><th>Action</th></tr>"
         data.forEach(element => {
-            html += "<tr><td>" + element["due_date"] + "</td><td>" + element["bounty"] + "</td><td>" + 
+            html += "<tr><td>" + element["due_date"] + "</td><td>" + element["end_date"] + "</td><td>" + element["bounty"] + "</td><td>" + 
             element["description"] + "</td><td>";
             if(element["status"] == 1)
             {
