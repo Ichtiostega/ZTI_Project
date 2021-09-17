@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+* Class that represetns the contract entity
+*/
 @Entity
 public class Contract {
     @Id

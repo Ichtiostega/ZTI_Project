@@ -2,7 +2,6 @@ package com.zti.bountyHunter.controllers;
 
 import com.zti.bountyHunter.dao.AuthoritiesInterface;
 import com.zti.bountyHunter.dao.ContractInterface;
-import com.zti.bountyHunter.dao.HunterInterface;
 import com.zti.bountyHunter.dao.UsersInterface;
 import com.zti.bountyHunter.models.Authorities;
 import com.zti.bountyHunter.models.Contract;
@@ -15,21 +14,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+* A class that defines endpoints responsible for providing the different subpages of the app.
+*/
 @Controller
 @Transactional
 public class PageController {
 
 	@Autowired
 	private ContractInterface contractInterface;
-	
-	@Autowired
-	private HunterInterface hunterInterface;
 
 	@Autowired
 	UsersInterface usersInterface;
@@ -40,6 +37,12 @@ public class PageController {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
+	/**
+	* Provides the main page of the application along with some key attributes.
+	*
+	* @param model	Current model
+	* @return      	Page name
+	*/
 	@RequestMapping(method = RequestMethod.GET, value = "/dashboard")
 	public String dashboard(Model model) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -65,21 +68,48 @@ public class PageController {
 		return "dashboard";
 	}
 
+	/**
+	* Provides the introduction page of the application with options to log in an register.
+	*
+	* @param model	Current model
+	* @return      	Page name
+	*/
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public String index(Model model) {
 		return "index";
 	}
 
+	/**
+	* Provides the login page of the application.
+	*
+	* @param model	Current model
+	* @return      	Page name
+	*/
 	@RequestMapping(method = RequestMethod.GET, value = "/login")
 	public String login(Model model) {
 		return "login";
 	}
 
+	/**
+	* Provides the register page of the application.
+	*
+	* @param model	Current model
+	* @return      	Page name
+	*/
 	@RequestMapping(method = RequestMethod.GET, value = "/register")
 	public String register(Model model) {
 		return "register";
 	}
 
+	/**
+	* Performs registration of the user and returns him to the introduction page.
+	*
+	* @param username	New users username
+	* @param password	New users password
+	* @param role		New users role
+	* @param model		Current model
+	* @return      		Page name
+	*/
 	@RequestMapping(method = RequestMethod.POST, value = "/register")
 	public String register(
 		@RequestParam(name="username", required=true) String username, 

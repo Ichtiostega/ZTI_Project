@@ -3,6 +3,9 @@ package com.zti.bountyHunter.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+* Class that represetns the users entity
+*/
 @Entity
 public class Users {
     @Id

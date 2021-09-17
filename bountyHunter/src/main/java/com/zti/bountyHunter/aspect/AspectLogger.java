@@ -17,14 +17,26 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+* Aspect class
+*/
 @Aspect
 @Component
 public class AspectLogger {
     @Autowired
     AuthoritiesInterface authoritiesInterface;
 
+	/**
+	* An aspect that logs all endpoint executions. Has the following format:<br>
+    *
+    * "{datetime}  {username}({role})-{@literal >}{request method}:{endpoint}"<br>
+    *
+    * Logs after endpoint execution<br>
+	*
+	* @param joinPoint	The aspects joint point
+	*/
     @Around("execution(* com.zti.bountyHunter.controllers..*(..))")
-    public Object doSomethingAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object aspectLogger(ProceedingJoinPoint joinPoint) throws Throwable {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Authorities auth = authoritiesInterface.getById(authentication.getName());
         String role;

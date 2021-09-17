@@ -3,6 +3,9 @@ package com.zti.bountyHunter.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+* Class that represetns the authorities entity
+*/
 @Entity
 public class Authorities {
     @Id
